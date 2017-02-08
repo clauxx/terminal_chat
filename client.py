@@ -11,7 +11,7 @@ def receiving(name, sock):
             tLock.acquire()
             while True:
                 data, addr = sock.recvfrom(1024)
-                print("\n" + data.decode())
+                print('\n' + "                       " + data.decode())
         except:
             pass
         finally:    
@@ -38,7 +38,8 @@ while message != "!q":
     tLock.acquire()
     tLock.release()
     message = input(name + "> ")
-    time.sleep(0.2)
+    print('\n')
+    time.sleep(0.01)
 
 shutdown = True
 rT.join()
