@@ -1,12 +1,12 @@
 import socket
 import time
 
-host = 'localhost'
 port = 8888
 
 clients = []
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+host = s.getsockname()[0]
 s.bind((host, port))
 s.setblocking(0)
 

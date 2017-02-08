@@ -17,12 +17,11 @@ def receiving(name, sock):
         finally:    
             tLock.release()
 
-host = 'localhost'
 port = 0
 
-server = ('localhost', 8888)
-
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+host = s.getsockname()[0]
+server = ('10.222.2.37', 8888)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s.bind((host, port))
 s.setblocking(0)
