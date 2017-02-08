@@ -11,7 +11,7 @@ def receiving(name, sock):
             tLock.acquire()
             while True:
                 data, addr = sock.recvfrom(1024)
-                print(data.decode())
+                print("\n" + data.decode())
         except:
             pass
         finally:    

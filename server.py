@@ -23,8 +23,12 @@ while not quitting:
 
         print(time.ctime(time.time()) + str(addr) + ':  :' + str(data))
         for client in clients: 
-            s.sendto(data, client)
-            print(data, client)
+            if(client != addr): 
+                s.sendto(data, client)
+                print(data, client)
+                
+                if("/users" in str(data)):
+                   s.sendto(clients, client)
 
     except:
         pass
