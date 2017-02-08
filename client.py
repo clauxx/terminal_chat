@@ -1,3 +1,4 @@
+import re
 import socket
 import threading
 import time
@@ -11,7 +12,9 @@ def receiving(name, sock):
             tLock.acquire()
             while True:
                 data, addr = sock.recvfrom(1024)
-                print('\n' + "                       " + data.decode())
+                data_decoded = data.decode()
+                parsed = re.split(":+", data_decoded)
+                print('\n' + "(" + time.ctime(time.time()) + ")" + "{" + parsed[0] + "}" + "> " + parsed[1])
         except:
             pass
         finally:    
@@ -29,15 +32,15 @@ s.setblocking(0)
 rT = threading.Thread(target=receiving, args=("RecvThread", s))
 rT.start()
 
-name = input("Name: ")
-message = input(name + "> ")
+name = input("Your name: ")
+message = input("(" + time.ctime(time.time()) + ")" + name + "> " + '\n') 
 while message != "!q":
     if message != "":
         fin_mess = name + ": " + message
         s.sendto(fin_mess.encode(), server)
     tLock.acquire()
     tLock.release()
-    message = input(name + "> ")
+    message = input("(" + time.ctime(time.time()) + ")" + "[" +  name + "]" + "> ")
     print('\n')
     time.sleep(0.01)
 
