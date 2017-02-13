@@ -23,8 +23,9 @@ while True:
         #parsed_data[2] = message
 
         print(addr)
-
+        print('***')
         print(users)
+        print('***')
         #print(users[parsed_data[1]])  
 
         if(parsed_data[0] not  in users.keys()):
@@ -35,14 +36,11 @@ while True:
 
         s.sendto(data, users[parsed_data[1]])
 
-        #if("!q" == parsed_data[2]):
-        #    quitting = True
+        if("!q" == parsed_data[2]):
+            quitting = True
                 
-        #print(time.ctime(time.time()) + str(addr) + ':  :' + str(data))
-
-                
-        #if("/users" == parsed_data[2]):
-        #    s.sendto(users.keys(), users[parsed_data[0]])
+        print(time.ctime(time.time()))
+        print('======================================')
 
     except:
         pass 

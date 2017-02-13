@@ -34,15 +34,14 @@ rT.start()
 
 name = input("Your name: ")
 target = input("Other user's name: ")
-message = input("(" + time.ctime(time.time()) + ")" + name + "> " + '\n') 
+message = ""
 while message != "!q":
+    message = input("(" + time.ctime(time.time()) + ")" + "[" +  name + "]" + "> ")
     if message != "":
         fin_mess = name + "::" + target + "::" +  message
         s.sendto(fin_mess.encode(), server)
     tLock.acquire()
     tLock.release()
-    message = input("(" + time.ctime(time.time()) + ")" + "[" +  name + "]" + "> ")
-    time.sleep(0.01)
 
 shutdown = True
 rT.join()
