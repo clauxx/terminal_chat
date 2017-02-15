@@ -47,6 +47,7 @@ class Server:
 
     def send(self, parsed, data):
         self.socket.sendto(data, self.users[parsed[1]])
+        print(data, self.users[parsed[1]])
 
     def start(self):
         stop = False
